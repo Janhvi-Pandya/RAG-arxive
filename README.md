@@ -92,42 +92,6 @@ Each test question is written from one known paper, so hit rate can check whethe
 
 **RAGAS metrics.** RAGAS uses an LLM as a grader. Faithfulness checks that the answer's claims are supported by the retrieved chunks. Answer relevancy checks that the answer addresses the question. Context recall checks that the retrieved chunks contain what the correct answer needs.
 
-## Results
-
-Fill these in from your own runs of `ingest.py` and `evaluate.py`. Do not copy numbers from anywhere else.
-
-| | Value |
-|---|---|
-| Papers downloaded | _ |
-| Chunks stored | _ |
-| Ingest time | _ |
-
-| Retrieval mode | Hit rate (top 3) |
-|---|---|
-| dense | _ |
-| bm25 | _ |
-| hybrid (RRF) | _ |
-| hybrid + rerank | _ |
-
-| RAGAS metric | Score |
-|---|---|
-| faithfulness | _ |
-| answer relevancy | _ |
-| context recall | _ |
-
-## Deployment (free)
-
-The app runs on a free Hugging Face Space (CPU basic: 2 vCPU, 16 GB RAM). On every push to `main`, the GitHub Actions workflow runs the tests and, if they pass, pushes the repo to the Space, which rebuilds the Docker image. The index is built during the image build, so the running app starts quickly.
-
-One-time setup:
-
-1. Create a Hugging Face account, then a new Space: SDK **Docker**, template **Blank**, hardware **CPU basic (free)**.
-2. In the Space's **Settings → Variables and secrets**, add secrets `LLM_API_KEY` (your Groq key), and variables `LLM_BASE_URL=https://api.groq.com/openai/v1` and `LLM_MODEL=llama-3.1-8b-instant`.
-3. Create a Hugging Face access token with **write** permission.
-4. In this GitHub repo's **Settings → Secrets and variables → Actions**, add the secret `HF_TOKEN`, and the variables `HF_USERNAME` (your Hugging Face username) and `HF_SPACE` (the Space name).
-5. Push to `main`, or rerun the workflow from the Actions tab.
-
-The live API docs are then at `https://<HF_USERNAME>-<HF_SPACE>.hf.space/docs`.
 
 ## Known limitations and what I'd improve
 
